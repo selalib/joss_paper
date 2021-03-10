@@ -1,7 +1,7 @@
 # SeLaLib joss paper
 
 
-[![PDF](https://github.com/selalib/joss_paper/workflows/Paper\ Draft/badge.svg)](https://github.com/selalib/joss_paper/actions)
+[![draft pdf](https://github.com/selalib/joss_paper/workflows/paper/badge.svg)](https://github.com/selalib/joss_paper/actions)
 
 Build the pdf with:
 
