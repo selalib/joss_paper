@@ -47,6 +47,25 @@ discretization schemes supplements the library.
 
 # Statement of need
 
+Codes like GYSELA [ref] currently allows to simulate ionic turbulence
+in tokamak plasmas by neglecting the temporal variations of the
+magnetic field. If you want to take into account not only the
+electron dynamics (currently considered adiabatic) but also the
+electromagnetic effects and enrich the physics of the model, you need
+important improvements of the numerical schemes (multiscale schemes in time and space,
+Vlasov-Maxwell resolution instead of Vlasov-Poisson, ...).
+
+One of the difficulties posed by kinetic models for plasmas, including
+in particular the Vlasov equation, is that they are posed in phase
+space which doubles the dimension (6D for the complete physical
+problem which can sometimes be restricted to 4D or 5D thanks to the
+existence of symmetries or the decoupling of certain time scales).
+The development and validation of a new numerical method is generally
+done in a simpler way in small 1D and 2D codes that do not require
+parallelization and that allow to run validation test cases in a
+few seconds or minutes, unlike real physical cases that require
+hours or even days on high-performance computers of national centers.
+
 The SeLaLib project arose from the need of researchers to develop
 numerical methods with simplified test cases while also having
 independently tested modules that would facilitate gradual changes in
@@ -54,7 +73,21 @@ existing production code. While originally envisioned to be specialized
 on the semi-lagrangian method, the abstractions that we have built can
 be used with other types of approaches, such as particle-in-cell.
 
+Selalib provides an API and a framework designed to handle 
+large physical test cases and after validation, offers to the physicists 
+the possibility to incorporate directly the software brick in their code.
+
+This well-defined software framework facilitates the efficient
+integration of new numerical techniques into a code that can handle
+real physical problems. With SeLalib you save a considerable amount
+of time in the development and validation process of complex numerical
+techniques.
+
+
 # Mathematics
+
+The software allows to numerically solve a number of mathematical
+problems related to the physics of fusion plasmas:
 
 - Vlasov equation:
 $$
@@ -74,6 +107,8 @@ $$\begin{aligned}
 - Guiding center
 
 $$\partial_t f(t,r,\theta) - \frac{\partial_{\theta}\Phi(r, \theta)}{r} \partial_r f(t,r,\theta) +  \frac{\partial_{r}\Phi}{r} \partial_{\theta} f  = 0.$$
+
+- Drift Kinetic
 
 # Citations
 
@@ -102,6 +137,5 @@ Figure sizes can be customized by adding an optional second parameter:
 
 Much of `SeLaLib` was implemented by Edwin Chacon-Golcher while he was supported by Inria through the AdT (Aide au développement technologique) selalib of the center Nancy-Grand Est.
 We acknowledge contributions from Aliou Diouf, Samuel Santis and Raphael Blanchard while funded also by Inria.
-
 
 # References
